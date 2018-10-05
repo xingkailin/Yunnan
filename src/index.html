@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/iview.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<script type="text/javascript" src="script/vue.min.js"></script>
+		<script type="text/javascript" src="script/iview.min.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+	</head>
+
+	<body sroll="no">
+		<div class="flex-box flex-vertical" id="main">
+			<!--header-->
+			<div class="ivu-row-flex header-height">
+				<i-header></i-header>
+			</div>
+			<!--中间-->
+			<div class="flex-con">
+				<div class="ivu-row-flex ivu-row-flex-middle ivu-row-flex-center main">
+					<div class="ivu-col ivu-col-span-lg-16">
+						<div class="ivu-row-flex ivu-row-flex-space-between">
+							<div class="ivu-col" @touchstart="location.href='office.html'" @click="location.href='office.html'">
+								<div class="index-btn">
+									<div class="index-btn-icon-01"></div>
+								</div>
+								<div class="index-btn-text-01">
+									<p>处室职能</p>
+								</div>
+							</div>
+							<div class="ivu-col" @touchstart="location.href='work.html'" @click="location.href='work.html'">
+								<div class="index-btn">
+									<div class="index-btn-icon-02"></div>
+								</div>
+								<div class="index-btn-text-02">
+									<p>办事流程</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--footer-->
+			<div class="ivu-row-flex footer-height">
+				<i-footer></i-footer>
+			</div>
+		</div>
+		
+	</body>
+	<script>
+		new Vue({
+			el : '#main'
+		});
+	</script>
+
+</html>

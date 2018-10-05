@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/iview.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<script type="text/javascript" src="data/co_office_data.js"></script>
+		<script type="text/javascript" src="script/vue.min.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+		<script type="text/javascript" src="script/officeDetail.js" defer="defer"></script>
+	</head>
+
+	<body sroll="no">
+		<div class="flex-box flex-vertical" id="main" v-cloak>
+			<!--header-->
+			<div class="header-height">
+				<i-header></i-header>
+			</div>
+			<!--中间-->
+			<div class="flex-box flex-vertical flex-con">
+				<div class="flex-con-5">
+					<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-100">
+						<div class="ivu-col ivu-col-span-20 height-90">
+							<div class="ivu-row-flex ivu-row-flex-space-between height-100 hidden">
+								<div class="ivu-col ivu-col-span-5 o-d-l-w">
+									<div class="o-d-l-title">{{currentOffice['name']}}</div>
+									<div class="o-d-l-desc">{{currentOffice['desc'][0]}}</div>
+									<div class="triangle"></div>
+								</div>
+								<div class="ivu-col ivu-col-span-18 ivu-col-offset-1 height-100">
+									<div class="o-d-r-w">
+										<div class="o-d-r-title">主要职能</div>
+										<div class="o-d-r-desc">
+											<p v-for="item in currentOffice['desc']">{{item}}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="flex-con-1">
+					<!--底部滚动切换-->
+					<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-90">
+						<div class="ivu-col width-100 height-100">
+							<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-100">
+								<div class="ivu-col width-100">
+									<div class="ivu-row-flex ivu-row-flex-space-between ivu-row-flex-middle width-100 height-100">
+										<div class="ivu-col ivu-col-span-1 arrow-left" @click="changeData('-')">
+											<i class="ivu-icon ivu-icon-ios-arrow-back"></i>
+										</div>
+										<div class="ivu-col ivu-col-span-22">
+											<ul class="ivu-row-flex ivu-row-flex-space-between">
+												<li v-for="(item,index) in currentOfficeGroup" class="ivu-col ivu-col-span-3 sc-category-li" :class="{'sc-active-category-li' : index == currentGroupIndex}" @click="changeData(index)">
+													<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-100">
+														<p class="roomName">{{item['name']}}</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="ivu-col ivu-col-span-1 arrow-right" @click="changeData('+')">
+											<i class="ivu-icon ivu-icon-ios-arrow-forward"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					<!--<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-80">
+						<div class="ivu-col ivu-col-span-20 height-100">
+							<div class="ivu-row-flex ivu-row-flex-middle ivu-row-flex-space-between height-100">
+								<div class="ivu-col ivu-col-span-5 o-d-l-w">
+									<div class="o-d-l-title">{{currentOffice['name']}}</div>
+									<div class="o-d-l-desc">{{currentOffice['desc'][0]}}</div>
+									<div class="triangle"></div>
+								</div>
+								<div class="ivu-col ivu-col-span-18 ivu-col-offset-1 height-100">
+									<div class="o-d-r-w">
+										<div class="o-d-r-title">主要职能</div>
+										<div class="o-d-r-desc">
+											<p v-for="item in currentOffice['desc']">{{item}}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>-->
+					<!--底部滚动切换-->
+					<!--<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-20">
+						<div class="ivu-col width-100 height-100">
+							<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-100">
+								<div class="ivu-col width-100">
+									<div class="ivu-row-flex ivu-row-flex-space-between ivu-row-flex-middle width-100 height-100">
+										<div class="ivu-col ivu-col-span-1 arrow-left" @click="changeData('-')">
+											<i class="ivu-icon ivu-icon-ios-arrow-back"></i>
+										</div>
+										<div class="ivu-col ivu-col-span-22">
+											<ul class="ivu-row-flex ivu-row-flex-space-between">
+												<li v-for="(item,index) in currentOfficeGroup" class="ivu-col ivu-col-span-3 sc-category-li" :class="{'sc-active-category-li' : index == currentGroupIndex}" @click="changeData(index)">
+													<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-100">
+														<p class="roomName">{{item['name']}}</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="ivu-col ivu-col-span-1 arrow-right" @click="changeData('+')">
+											<i class="ivu-icon ivu-icon-ios-arrow-forward"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>-->
+			</div>
+			<!--footer-->
+			<div class="footer-height">
+				<i-footer footer-content="处室职能"></i-footer>
+			</div>
+		</div>
+	
+	</body>
+
+</html>

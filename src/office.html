@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/iview.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<script type="text/javascript" src="data/co_office_data.js"></script>
+		<script type="text/javascript" src="script/vue.min.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+		<script type="text/javascript" src="script/office.js" defer="defer"></script>
+		<style>
+			.back-blue {
+				background-image: url(image/blue-bg.png);
+			}
+			
+			.back-green {
+				background-image: url(image/green-bg.png)
+			}
+		</style>
+	</head>
+
+	<body sroll="no">
+		<div class="flex-box flex-vertical" id="main" v-cloak>
+			<!--header-->
+			<div class="header-height">
+				<i-header></i-header>
+			</div>
+			<!--中间-->
+			<div class="flex-con">
+				<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-100">
+					<div class="ivu-col ivu-col-span-21">
+						<!--楼层及机构介绍-->
+						<div class="transparent-back">
+							<div class="clear office-list-wrap">
+								<div v-for="(item,index) in officeData" class="office-list-div flex-box" :class="item['css']" @click="officeDesc(index,item['name'])">
+									<div class="office-list-img">
+										<img :src="item['icon_src']">
+									</div>
+									<div class="office-list-title">
+										{{item['name']}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--footer-->
+			<div class="footer-height">
+				<i-footer footer-content="处室职能"></i-footer>
+			</div>
+		</div>
+	</body>
+
+</html>

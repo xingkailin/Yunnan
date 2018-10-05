@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/iview.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<script type="text/javascript" src="data/co_process_data.js"></script>
+		<script type="text/javascript" src="script/vue.min.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+		<script type="text/javascript" src="script/work.js" defer="defer"></script>
+	</head>
+
+	<body sroll="no">
+		<div class="flex-box flex-vertical" id="main">
+			<!--header-->
+			<div class="ivu-row-flex header-height">
+				<i-header></i-header>
+			</div>
+			<!--中间-->
+			<div class="flex-con">
+				<div class="ivu-row-flex ivu-row-flex-middle ivu-row-flex-center height-100">
+					<div class="ivu-col ivu-col-span-21 height-90">
+						<div class="transparent-back">
+							<div class="clear work-list-wrap height-100">
+								<div v-for="(level1,index1) in workData" class="work-list-div work-back-sky-blue">
+									<div class="ivu-row-flex height-100">
+										<div class="ivu-col-span-10" @click="changePage(index1,null)">
+											<div class="work-img-icon">
+												<img src="image/work-01.png">
+											</div>
+											<div class="work-list-left-title">{{level1['title']}}</div>
+										</div>
+										<div class="ivu-col-span-1">
+											<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-100">
+												<div class="ivu-col height-80">
+													<div class="work-line"></div>
+												</div>
+											</div>
+										</div>
+										<div class="ivu-col-span-13">
+											<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-100">
+												<div class="ivu-col width-100">
+													<div v-for="(level12,index2) in level1['level2']" v-if="index2 <= 6" class="work-list-ca" @click="changePage(index1,index2)">{{level12['title']}}</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--footer-->
+			<div class="ivu-row-flex footer-height">
+				<i-footer footer-content="办事流程"></i-footer>
+			</div>
+		</div>
+	</body>
+
+</html>

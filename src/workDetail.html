@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/iview.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<script type="text/javascript" src="data/co_process_data.js"></script>
+		<script type="text/javascript" src="script/vue.min.js"></script>
+		<script type="text/javascript" src="script/iview.min.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+		<script type="text/javascript" src="script/workDetail.js" defer="defer"></script>
+	</head>
+
+	<body sroll="no">
+		<div class="flex-box flex-vertical" id="main">
+			<!--header-->
+			<div class="ivu-row-flex header-height">
+				<i-header></i-header>
+			</div>
+			<!--中间-->
+			<div class="flex-con">
+				<div class="ivu-row-flex ivu-row-flex-middle ivu-row-flex-center height-100">
+					<div class="ivu-col ivu-col-span-21 height-90">
+						<div class="ivu-row-flex ivu-row-flex-middle ivu-row-flex-space-between height-100">
+							<div class="ivu-row-flex ivu-row-flex-center ivu-row-flex-middle height-10 width-100">
+								<div class="ivu-col-span-24 process-title">{{title}}</div>
+							</div>
+							<div class="ivu-row-flex ivu-row-flex-middle ivu-row-flex-space-between height-90 width-100">
+								<div class="ivu-col ivu-col-span-5 o-d-l-p height-100">
+									<!--办事流程分类标题-->
+									<ul class="o-p-ul">
+										<li v-for="(item,index2) in leftLists" :class="{'o-p-active-li' : index2 == level2Index}" @click="changeLevel2(index2)">{{item}}</li>
+									</ul>
+									<!--向下选择下一个-->
+									<div class="arrow-down-div">
+										<img src="image/arrow_down.png">
+									</div>
+									<div class="triangle"></div>
+								</div>
+								<div class="ivu-col ivu-col-span-18 ivu-col-offset-1 height-100">
+									<div class="o-d-r-w">
+										<div class="o-d-r-desc">
+											<template v-if="rightContent['content']['type'] == 'text'">
+												<p v-for="item in rightContent['content']['detail']">{{item}}</p>
+											</template>
+											<template v-else-if="rightContent['content']['type'] == 'table'">
+												<i-table border :columns="rightContent['content']['detail']['cols']" :data="rightContent['content']['detail']['rows']"></i-table>											
+											</template>
+											<template v-else-if="rightContent['content']['type'] == 'images'">
+												<p v-for="item in rightContent['content']['detail']">
+													<img :src="item['src']">
+												</p>
+											</template>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--footer-->
+			<div class="ivu-row-flex footer-height">
+				<i-footer footer-content="办事流程"></i-footer>
+			</div>
+		</div>
+	</body>
+
+</html>
